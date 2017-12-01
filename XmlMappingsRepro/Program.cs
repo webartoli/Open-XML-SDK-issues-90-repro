@@ -11,7 +11,7 @@ namespace XmlMappingsRepro
     {
         static void Main(string[] args)
         {
-            ApplyXmlMap("buggy", x => x);
+            ApplyXmlMap("actual", x => x);
             ApplyXmlMap("expected", x => new OpenXmlElementNamespaceInjector<MapInfo>(x).CopyToDefault("x").GetInstance());
         }
 
