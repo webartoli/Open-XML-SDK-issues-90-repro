@@ -11,11 +11,11 @@ namespace XmlMappingsRepro
     {
         static void Main(string[] args)
         {
-            GenerateFile("buggy", x => x);
-            GenerateFile("expected", x => new OpenXmlElementNamespaceInjector<MapInfo>(x).CopyToDefault("x").GetInstance());
+            ApplyXmlMap("buggy", x => x);
+            ApplyXmlMap("expected", x => new OpenXmlElementNamespaceInjector<MapInfo>(x).CopyToDefault("x").GetInstance());
         }
 
-        private static void GenerateFile(string filename, Func<MapInfo, MapInfo> applyHack)
+        private static void ApplyXmlMap(string filename, Func<MapInfo, MapInfo> applyHack)
         {
             var template = new FileInfo(AssetFile("brands-file.xlsx"));
             var fileInfo = template.CopyTo($"{filename}.xlsx", true);
